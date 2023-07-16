@@ -113,12 +113,12 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="../../views/khoahoc/danh-sach-khoa-hoc.php" class="menu-link">
+                                <a href="{{ route('showDanhSachKhoaHoc') }}" class="menu-link">
                                     <div data-i18n="Vertical Form">Danh sách</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="../../views/khoahoc/add-khoahoc.php" class="menu-link">
+                                <a href="{{ route('addKhoaHoc') }}" class="menu-link">
                                     <div data-i18n="Horizontal Form">Thêm</div>
                                 </a>
                             </li>

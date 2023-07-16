@@ -13,13 +13,18 @@ use App\Http\Controllers\KhoaHocController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return response() -> json(["user" => [
+        "ten" => "teo"
+    ]]);
+});
 Route::prefix('khoahoc')->group(function(){
     Route::controller(KhoaHocController::class)->group(function(){
         Route::get('/','showDanhSachKhoaHoc')->name('showDanhSachKhoaHoc');
+        Route::get('/addKhoaHoc','getAddKhoaHoc')->name('addKhoaHoc');
+        Route::post('/addKhoaHoc','addKhoaHoc')->name('addKhoaHoc');
     });
+    
    
 });
 
