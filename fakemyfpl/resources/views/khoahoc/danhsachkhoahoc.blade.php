@@ -1,5 +1,7 @@
-<h1>hello</h1>
-@extends('layouts.layouts')
+@extends('layouts.layout')
+@section('title')
+    Danh sách khóa học
+@endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Danh sách /</span> Khóa học</h4>
@@ -31,7 +33,7 @@
                         
                         </td>
                         <td>
-                            <img src="'.$row['IMAGE'].'" height="50px" style="object-fit: contain;" alt="">
+                            <img src="" height="50px" style="object-fit: contain;" alt="">
                             </td>
                         <td>
                             19/2/3000
