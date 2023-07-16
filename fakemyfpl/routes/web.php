@@ -13,9 +13,9 @@ use App\Http\Controllers\KhoaHocController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::prefix('khoahoc')->group(function(){
     Route::controller(KhoaHocController::class)->group(function(){
         Route::get('/','showDanhSachKhoaHoc')->name('showDanhSachKhoaHoc');

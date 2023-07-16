@@ -17,6 +17,7 @@ class KhoaHocController extends Controller{
     //Hien thi danh sach khoa hoc
     public function showDanhSachKhoaHoc()
     {
-        return "Cai nganh l";
+       
+        return view('khoahoc.danhsachkhoahoc');
     }
 }
