@@ -7,12 +7,12 @@ use App\Models\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-use function PHPUnit\Framework\isEmpty;
 
 class KhoaHocController extends Controller{
 
     private $khoahoc;
     private $cloudinary;
+    const PAGE = 2;
     public function __construct()
     {
         $this->khoahoc = new KhoaHocs();
@@ -26,10 +26,11 @@ class KhoaHocController extends Controller{
     public function showDanhSachKhoaHoc()
     {
        
-        $list = $this->khoahoc->getDanhSach();
+        $list = $this->khoahoc->getDanhSach($this::PAGE);
         
         
-        return view('khoahoc.danhsachkhoahoc',compact('list'));
+         return view('khoahoc.danhsachkhoahoc',["list" => $list]);
+        // return dd($list);
     }
 
     public function getAddKhoaHoc(Request $request){

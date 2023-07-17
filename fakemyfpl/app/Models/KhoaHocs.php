@@ -11,7 +11,7 @@ class KhoaHocs extends Model
     use HasFactory;
     protected STRING $Table = "KHOAHOC";
 
-    public function getDanhSach()
+    public function getDanhSach($page = null)
     {
         //Phai dung ki tu viet hoa
         // //RAW QUERY / được build từ PD
@@ -19,7 +19,7 @@ class KhoaHocs extends Model
         // $list = DB::select($query);
         //Query builder
         //Sử dụng statement để sử dụng bất cứ câu lệnh nào cũng đc
-        $list = DB::table($this->Table)->get();
+        $list = DB::table($this->Table)->paginate($page);
         return $list;
     }
     public function addKhoaHoc($data){

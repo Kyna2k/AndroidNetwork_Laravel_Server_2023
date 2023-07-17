@@ -71,8 +71,14 @@
                    
                 </tbody>
             </table>
+           
         </div>
+       
     </div>
+    <div style="display: flex; justify-content: flex-end; margin: 20px ">
+        {{ $list->links() }}
+    </div>
+   
 </div>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
