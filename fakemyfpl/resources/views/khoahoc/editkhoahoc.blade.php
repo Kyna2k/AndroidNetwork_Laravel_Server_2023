@@ -1,11 +1,11 @@
 @extends('layouts.layout')
 @section('title')
-    Thêm khóa học
+    Sửa khóa học
 @endsection
 @section('content')
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Thêm </span>khóa học</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sửa </span>khóa học</h4>
 
     <div class="row">
       <div class="col-xl">
@@ -15,7 +15,7 @@
             <small class="text-muted float-end">Default label</small>
           </div>
           <div class="card-body">
-            <form action="{{ route('khoahoc.addKhoaHoc') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('khoahoc.editKhoaHoc',['id'=>$khoahoc->id]) }}" method="post" enctype="multipart/form-data">
                 {{-- @csrf Dùng để tạo ra token cho from liên quan đến vấn để bảo mật --}}
                 @csrf
                 {{-- Error form --}}
@@ -29,7 +29,7 @@
                 {{-- old dùng để lưu lại dữ liệu đã nhập, do errors sự dùng cách flash để reload khi sai --}}
               <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Tên Khóa Học</label>
-                <input type="text" value="{{ old('name') }}" name="name" class="form-control" id="basic-default-fullname" placeholder="Android Network" />
+                <input type="text" value="{{ old('name')?? $khoahoc->NAME }}" name="name" class="form-control" id="basic-default-fullname" placeholder="Android Network" />
                 @error('name')
                     <span style="color: red;">{{ $message }}</span>
                 @enderror
@@ -38,11 +38,11 @@
               <label class="form-label">Loại</label>
               <div style="display: flex; flex-direction: row;">
                 <div class="form-check mt-2">
-                  <input name="TYPE" class="form-check-input" type="radio" value="NORMAL" id="defaultRadio1" checked />
+                  <input name="TYPE" class="form-check-input" type="radio" value="NORMAL" id="defaultRadio1" {{ $khoahoc->TYPE === 'NORMAL' ? 'checked' : '' }} />
                   <label class="form-check-label" for="defaultRadio1"> NORMAL </label>
                 </div>
                 <div class="form-check  mt-2 ms-5">
-                  <input name="TYPE" class="form-check-input" type="radio" value="YOUTUBE" id="defaultRadio2" />
+                  <input name="TYPE" class="form-check-input" type="radio" value="YOUTUBE" id="defaultRadio2" {{ $khoahoc->TYPE === 'YOUTUBE' ? 'checked' : '' }}/>
                   <label class="form-check-label" for="defaultRadio2"> YOUTUBE </label>
                 </div>
               </div>
@@ -50,7 +50,7 @@
               <!--/radius-->
               <div class="mb-3 mt-3">
                 <label class="form-label" for="basic-default-company">Giá</label>
-                <input type="text" value="{{ old('price') }}" name="price" class="form-control" id="basic-default-company" placeholder="2000" />
+                <input type="text" value="{{ old('price') ?? $khoahoc->price }}" name="price" class="form-control" id="basic-default-company" placeholder="2000" />
                 @error('price')
                 <span style="color: red;">{{ $message }}</span>
                 @enderror  
@@ -59,7 +59,7 @@
 
               <div class="mb-3">
                 <label class="form-label" for="basic-default-message">Mô tả</label>
-                <textarea id="basic-default-message" name="description" class="form-control" placeholder="Bạn nghĩ khóa học này có bịp không?">{{ old('price') }}</textarea>
+                <textarea id="basic-default-message" name="description" class="form-control" placeholder="Bạn nghĩ khóa học này có bịp không?">{{ old('price') ?? $khoahoc->description }}</textarea>
               </div>
               <div class="mb-3">
                 <label for="formFile" class="form-label">Default file input example</label>
@@ -68,8 +68,8 @@
                 <span style="color: red;">{{ $message }}</span>
                 @enderror  
             </div>
-              <img style="object-fit: contain;" width="100%" id="ReviewImage" />
-              <button type="submit" class="btn btn-primary mt-3">Thêm</button>
+              <img src="{{ $khoahoc->IMAGE }}" style="object-fit: contain;" width="100%" id="ReviewImage" />
+              <button type="submit" class="btn btn-primary mt-3">Sửa</button>
             </form>
           </div>
         </div>

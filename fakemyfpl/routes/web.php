@@ -18,11 +18,14 @@ Route::get('/', function () {
         "ten" => "teo"
     ]]);
 });
-Route::prefix('khoahoc')->group(function(){
+Route::prefix('khoahoc')->name('khoahoc.')->group(function(){
     Route::controller(KhoaHocController::class)->group(function(){
         Route::get('/','showDanhSachKhoaHoc')->name('showDanhSachKhoaHoc');
         Route::get('/addKhoaHoc','getAddKhoaHoc')->name('addKhoaHoc');
         Route::post('/addKhoaHoc','addKhoaHoc')->name('addKhoaHoc');
+        Route::get('/editKhoaHoc/{id}','getEditKhoaHoc')->name('editKhoaHoc');
+        Route::post('/editKhoaHoc/{id}','editKhoaHoc')->name('editKhoaHoc');
+        Route::get('/delete/{id}','delete')->name('delete');
     });
     
    

@@ -113,12 +113,12 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="{{ route('showDanhSachKhoaHoc') }}" class="menu-link">
+                                <a href="{{ route('khoahoc.showDanhSachKhoaHoc') }}" class="menu-link">
                                     <div data-i18n="Vertical Form">Danh sách</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('addKhoaHoc') }}" class="menu-link">
+                                <a href="{{ route('khoahoc.addKhoaHoc') }}" class="menu-link">
                                     <div data-i18n="Horizontal Form">Thêm</div>
                                 </a>
                             </li>
