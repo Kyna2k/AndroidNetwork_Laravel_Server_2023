@@ -119,8 +119,9 @@ class KhoaHocController extends Controller{
             "IMAGE" => $image,
             "id" => $id
         ];
+        // return dd($data);
         $result = $this->khoahoc->editKhoaHoc($data);
-        if($result >0)
+        if($result >=0)
         {
             return redirect()->route('khoahoc.showDanhSachKhoaHoc')->with('msg','Sửa khóa học thành công');
         }
@@ -131,7 +132,11 @@ class KhoaHocController extends Controller{
             return view('Error.404');
         }else{
             $result = $this->khoahoc->delateKhoaHoc($id);
-            return redirect()->route('khoahoc.showDanhSachKhoaHoc')->with('msg','Xóa khóa học thành công');
+            if($result === 1)
+            {
+                return redirect()->route('khoahoc.showDanhSachKhoaHoc')->with('msg','XóaA khóa học thành công');
+
+            }
         }
     }
 }

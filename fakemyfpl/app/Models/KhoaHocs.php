@@ -14,9 +14,12 @@ class KhoaHocs extends Model
     public function getDanhSach()
     {
         //Phai dung ki tu viet hoa
-        //RAW QUERY
-        $query = "SELECT * FROM $this->Table";
-        $list = DB::select($query);
+        // //RAW QUERY / được build từ PD
+        // $query = "SELECT * FROM $this->Table";
+        // $list = DB::select($query);
+        //Query builder
+        //Sử dụng statement để sử dụng bất cứ câu lệnh nào cũng đc
+        $list = DB::table($this->Table)->get();
         return $list;
     }
     public function addKhoaHoc($data){
@@ -32,7 +35,7 @@ class KhoaHocs extends Model
     }
     public function editKhoaHoc($data){
         $query ="";
-        if($data["IMAGE"] != null || $data["IMAGE"] ==="")
+        if($data["IMAGE"] !=="")
         {
             $query = 
             "UPDATE $this->Table
@@ -43,16 +46,17 @@ class KhoaHocs extends Model
                     IMAGE = :IMAGE
                     WHERE id = :id";
         }else{
+            unset($data["IMAGE"]);
             $query = 
             "UPDATE $this->Table
                 SET NAME = :NAME,
                     TYPE = :TYPE,
                     description = :description,
-                    price = :price,
+                    price = :price
                     WHERE id = :id";
         }
-        $result = DB::update($query,$data);
-        return $result;
+         $result = DB::update($query,$data);
+         return $result;
     }
     public function delateKhoaHoc($id){
         $query = "DELETE FROM $this->Table WHERE id=:id";
