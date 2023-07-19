@@ -12,7 +12,7 @@ class KhoaHocController extends Controller{
 
     private $khoahoc;
     private $cloudinary;
-    const PAGE = 2;
+    const PAGE = 4;
     public function __construct()
     {
         $this->khoahoc = new KhoaHocs();
@@ -94,6 +94,7 @@ class KhoaHocController extends Controller{
         // return dd($khoahoc);
         
     }
+
     public function editKhoaHoc(Request $request,$id){
         $messages = [
             'required' => 'Trường :attribute vui lòng không để trống',

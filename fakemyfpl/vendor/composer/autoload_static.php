@@ -539,6 +539,7 @@ class ComposerStaticInitfbeb990e3e8d9a27cc5df3ffeb714504
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Kernel' => __DIR__ . '/..' . '/laravel/pint/app/Kernel.php',
+        'App\\Models\\Cloudinary' => __DIR__ . '/../..' . '/app/Models/Cloudinary.php',
         'App\\Models\\KhoaHocs' => __DIR__ . '/../..' . '/app/Models/KhoaHocs.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Output\\Concerns\\InteractsWithSymbols' => __DIR__ . '/..' . '/laravel/pint/app/Output/Concerns/InteractsWithSymbols.php',

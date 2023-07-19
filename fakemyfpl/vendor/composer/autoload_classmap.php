@@ -28,6 +28,7 @@ return array(
     'App\\Http\\Middleware\\ValidateSignature' => $baseDir . '/app/Http/Middleware/ValidateSignature.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Kernel' => $vendorDir . '/laravel/pint/app/Kernel.php',
+    'App\\Models\\Cloudinary' => $baseDir . '/app/Models/Cloudinary.php',
     'App\\Models\\KhoaHocs' => $baseDir . '/app/Models/KhoaHocs.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Output\\Concerns\\InteractsWithSymbols' => $vendorDir . '/laravel/pint/app/Output/Concerns/InteractsWithSymbols.php',

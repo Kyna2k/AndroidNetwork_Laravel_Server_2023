@@ -3,6 +3,7 @@
     Danh sách khóa học
 @endsection
 @section('content')
+
 <div class="container-xxl flex-grow-1 container-p-y">
     @if(session('msg'))
                 <div class="alert alert-success text-center">
@@ -28,13 +29,11 @@
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach ($list as  $item)
-                        
                     <tr>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $item->id }}</strong></td>
                         <td>{{ $item->NAME }}</td>
                         <td>
                             @if($item -> TYPE === "YOUTUBE")
-            
                             <span class="badge bg-label-primary me-1">{{ $item->TYPE }}</span>
                             @else
                             <span class="badge bg-label-warning me-1">{{ $item->TYPE }}</span>

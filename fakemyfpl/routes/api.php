@@ -22,3 +22,4 @@ Route::post('/test',function(Request $request){
     return ["Mess"=>  "Ngu vl",
             "Data" => $result];
 });
+

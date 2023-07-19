@@ -68,7 +68,9 @@
                 <span style="color: red;">{{ $message }}</span>
                 @enderror  
             </div>
-              <img src="{{ $khoahoc->IMAGE }}" style="object-fit: contain;" width="100%" id="ReviewImage" />
+              <div style="width: 100%; display: flex; justify-content: center;"> 
+                <img  src="{{ $khoahoc->IMAGE }}" style="object-fit: contain;" id="ReviewImage" />  
+              </div>
               <button type="submit" class="btn btn-primary mt-3">Sửa</button>
             </form>
           </div>
@@ -77,11 +79,17 @@
     </div>
   </div>
   <script>
+    var imgtag = document.getElementById("ReviewImage");
+    imgtag.onload = () =>{
+      if(imgtag.src != ""){
+        imgtag.height = "200";
+      }
+    }
     function onFileSelected(event) {
     var selectedFile = event.target.files[0];
     var reader = new FileReader();
   
-    var imgtag = document.getElementById("ReviewImage");
+    imgtag = document.getElementById("ReviewImage");
     imgtag.title = selectedFile.name;
   
     reader.onload = function(event) {

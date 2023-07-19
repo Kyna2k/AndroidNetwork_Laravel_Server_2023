@@ -18,6 +18,7 @@ Route::get('/', function () {
         "ten" => "teo"
     ]]);
 });
+
 Route::prefix('khoahoc')->name('khoahoc.')->group(function(){
     Route::controller(KhoaHocController::class)->group(function(){
         Route::get('/','showDanhSachKhoaHoc')->name('showDanhSachKhoaHoc');
@@ -27,7 +28,6 @@ Route::prefix('khoahoc')->name('khoahoc.')->group(function(){
         Route::post('/editKhoaHoc/{id}','editKhoaHoc')->name('editKhoaHoc');
         Route::get('/delete/{id}','delete')->name('delete');
     });
-    
    
 });
 
