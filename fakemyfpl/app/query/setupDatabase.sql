@@ -42,13 +42,15 @@ CREATE TABLE
         id INT PRIMARY KEY AUTO_INCREMENT,
         masinhvien VARCHAR(7) not NULL UNIQUE,
         hoten VARCHAR(50) NOT NULL,
-        khoa VARCHAR(4) not NULL,
+        email  varchar(40) not NULL UNIQUE,
+        khoa VARCHAR(7) not NULL,
         IMAGE VARCHAR(255) DEFAULT (
             'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
         ),
         token_device varchar(255),
         createat DATETIME DEFAULT NOW()
     )
+
 CREATE TABLE
     IF NOT EXISTS LOP (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -90,7 +92,7 @@ CREATE TABLE
     ) 
     
     
-    -- CREATE Table CHAT (
+    -- CREATE Table CHAT (.`1`1`
     --     id INT PRIMARY KEY AUTO_INCREMENT,
     --     id_user_send INT NOT NULL,
     --     id_user_get INT NOT NULL,
@@ -99,3 +101,7 @@ CREATE TABLE
     --     Foreign Key (id_user_send) REFERENCES USERS(id),
     --     Foreign Key (id_user_get) REFERENCES USERS(id)
     -- )
+--Them admin
+INSERT INTO ADMIN (username,password,email,ten) VALUES ('admin','admin','huynobi1809@gmail.com','Phan Thanh Huy');
+
+INSERT INTO SINHVIEN(masinhvien,email,hoten,khoa) VALUES ('ps23156','huyptps23156@fpt.edu.vn','Phan Thanh Huy','MD17304')

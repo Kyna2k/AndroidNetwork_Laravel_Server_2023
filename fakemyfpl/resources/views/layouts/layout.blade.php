@@ -94,6 +94,25 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-table"></i>
+                            <div data-i18n="Form Layouts">Sinh Viên</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                
+                                <a href="{{ route('khoahoc.showDanhSachKhoaHoc') }}" class="menu-link">
+                                    <div data-i18n="Vertical Form">Danh sách sinh viên</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('khoahoc.addKhoaHoc') }}" class="menu-link">
+                                    <div data-i18n="Horizontal Form">Thêm sinh viên</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <!-- Misc -->
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>

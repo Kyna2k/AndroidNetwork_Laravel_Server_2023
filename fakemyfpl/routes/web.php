@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KhoaHocController;
+use App\Http\Controllers\admin;
+use App\Http\Controllers\SinhVienController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +17,7 @@ use App\Http\Controllers\KhoaHocController;
 */
 
 Route::get('/', function () {
-    return response() -> json(["user" => [
-        "ten" => "teo"
-    ]]);
+    return redirect()->route('admin.login');
 });
 
 Route::prefix('khoahoc')->name('khoahoc.')->group(function(){
@@ -28,8 +29,19 @@ Route::prefix('khoahoc')->name('khoahoc.')->group(function(){
         Route::post('/editKhoaHoc/{id}','editKhoaHoc')->name('editKhoaHoc');
         Route::get('/delete/{id}','delete')->name('delete');
     });
-   
 });
 
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::controller(admin::class)->group(function(){
+        Route::get('/','getLogin')->name('login');
+        Route::post('/','login')->name('login');
+    });
+});
+
+Route::prefix('sinhvien')->name('sinhvien.')->group(function(){
+    Route::controller(SinhVienController::class)->group(function(){
+        Route::get('/','showDanhSachSinhVien')->name('showDanhSachSinhVien');
+    });
+});
     
 
