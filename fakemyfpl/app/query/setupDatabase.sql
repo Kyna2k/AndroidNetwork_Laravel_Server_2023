@@ -1,67 +1,101 @@
--- Active: 1687964945195@@127.0.0.1@3306
--- CREATE DATABASE fakemyfpl
---     DEFAULT CHARACTER SET = 'utf8mb4';
 
-CREATE DATABASE IF NOT EXISTS QUANLYSINHVIEN
-
-USE QUANLYSINHVIEN
-
-    CREATE TABLE IF NOT EXISTS USERS (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    EMAIL VARCHAR(50) not NULL UNIQUE,
-    PASSWORD VARCHAR(50) NOT NULL,
-    NAME VARCHAR(50) not NULL,
-    IMAGE VARCHAR(255) DEFAULT ('https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'),
-    AGE INT(2),
-    Type VARCHAR(5) not NULL DEFAULT ('USERS')
-)
-
-CREATE TABLE IF NOT EXISTS KHOAHOC (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    NAME VARCHAR(50) not NULL,
-    TYPE VARCHAR(15) NOT NULL,
-    IMAGE VARCHAR(255) DEFAULT('https://banner2.cleanpng.com/20181025/i/kisspng-computer-icons-image-learning-portable-network-gra-abstract-geometric-backgrounds-5bd16c725a0929.6498147015404514423688.jpg'),
-    CreateAt DATETIME DEFAULT NOW(),
-    description VARCHAR(50) NOT NULL, 
-    price INT NOT NULL DEFAULT (0)
-)
-
-CREATE TABLE CHITIETKHOAHOC (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    id_user int not NULL,
-    id_khoahoc int not null,
-    status BIT not NULL,
-    CreateAt DATETIME NOT NULL DEFAULT NOW(),
-    Foreign Key (id_user) REFERENCES USERS(id),
-    Foreign Key (id_khoahoc) REFERENCES KHOAHOC(id)
-)
-
-create table reset_password (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	token VARCHAR(50) NOT NULL,
-	createdAt DATETIME NOT NULL DEFAULT NOW(),
-	email VARCHAR(50) NOT NULL,
-	avaiable BIT DEFAULT 1
-)
-
-CREATE Table CHAT (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    id_user_send INT NOT NULL,
-    id_user_get INT NOT NULL,
-    noidung VARCHAR(255) NOT NULL,
-    CreateAt DATETIME NOT NULL DEFAULT Now(),
-    Foreign Key (id_user_send) REFERENCES USERS(id),
-    Foreign Key (id_user_get) REFERENCES USERS(id)
-)
-CREATE TABLE BAIHOC (
-
-)
-
-INSERT INTO USERS (EMAIL,PASSWORD,NAME,AGE,Type)
-    VALUES 
-        ('admin','admin','Huy Phan',23,'ADMIN'),
-        ('huynobi1809@gmail.com','123','Tang Ngoc Anh',21,"USERS")
-
-
-SELECT * FROM Khoahoc
-
+CREATE DATABASE
+    IF NOT EXISTS FAKEMYFPL
+    
+USE FAKEMYFPL
+CREATE TABLE
+    IF NOT EXISTS LOAIBAIVIET (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        tenbaiviet VARCHAR(30) not NULL,
+        hinhanh VARCHAR(255)
+    )
+CREATE TABLE
+    IF NOT EXISTS BAIVIET (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        tieude VARCHAR(50) not NULL,
+        noidung VARCHAR(255) not null,
+        -- HTML
+        tennguoidang VARCHAR(40) not null,
+        id_loaibaiviet int not null,
+        createat DATETIME DEFAULT NOW(),
+        Foreign Key (id_loaibaiviet) REFERENCES LOAIBAIVIET(id)
+    )
+CREATE TABLE
+    IF NOT EXISTS ADMIN (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        username VARCHAR(30) not NULL UNIQUE,
+        password varchar(40) not null,
+        email varchar(40) not null UNIQUE,
+        ten varchar(30) not null
+    )
+CREATE TABLE
+    IF NOT EXISTS THONGBAO (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        tieude VARCHAR(30) not null,
+        noidung varchar(100) not null,
+        createat DATETIME DEFAULT NOW(),
+        hinhanh VARCHAR(255),
+        topic varchar(10)
+    )
+CREATE TABLE
+    IF NOT EXISTS SINHVIEN (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        masinhvien VARCHAR(7) not NULL UNIQUE,
+        hoten VARCHAR(50) NOT NULL,
+        khoa VARCHAR(4) not NULL,
+        IMAGE VARCHAR(255) DEFAULT (
+            'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
+        ),
+        token_device varchar(255),
+        createat DATETIME DEFAULT NOW()
+    )
+CREATE TABLE
+    IF NOT EXISTS LOP (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        malop VARCHAR(7) not NULL UNIQUE
+    )
+CREATE TABLE
+    IF NOT EXISTS MONHOC (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        mamon VARCHAR(10) not NULL UNIQUE,
+        tenmon VARCHAR(40),
+        hinhanh VARCHAR(255)
+    )
+CREATE TABLE
+    IF NOT EXISTS GIAOVIEN (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        tengiaovien VARCHAR(10) not NULL,
+        hinhanh VARCHAR(255)
+    )
+CREATE TABLE
+    IF NOT EXISTS CHITIETLOP (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        id_sinhvien int,
+        id_lop int,
+        Foreign Key (id_sinhvien) REFERENCES SINHVIEN(id),
+        Foreign Key (id_lop) REFERENCES LOP(id)
+    )
+CREATE TABLE
+    IF NOT EXISTS LICHHOC (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        id_lop int,
+        id_giaovien int,
+        id_monhoc int,
+        phonghoc varchar(10),
+        thoigian DATETIME,
+        loai varchar(10),
+        Foreign Key (id_lop) REFERENCES LOP(id),
+        Foreign Key (id_giaovien) REFERENCES GIAOVIEN(id),
+        Foreign Key (id_monhoc) REFERENCES MONHOC(id)
+    ) 
+    
+    
+    -- CREATE Table CHAT (
+    --     id INT PRIMARY KEY AUTO_INCREMENT,
+    --     id_user_send INT NOT NULL,
+    --     id_user_get INT NOT NULL,
+    --     noidung VARCHAR(255) NOT NULL,
+    --     CreateAt DATETIME NOT NULL DEFAULT Now(),
+    --     Foreign Key (id_user_send) REFERENCES USERS(id),
+    --     Foreign Key (id_user_get) REFERENCES USERS(id)
+    -- )
