@@ -36,7 +36,7 @@ class admin extends Controller
             return redirect()->route('admin.login')->with('msg',"Tài khoản không tồn tại");
         }else{
             if($result->password === $request->password){
-                return "đăng nhập thành cống";
+                return redirect()->route('sinhvien.showDanhSachSinhVien');
             }else{
                 return redirect()->route('admin.login')->with('msg',"Sai mật khẩu");
             }

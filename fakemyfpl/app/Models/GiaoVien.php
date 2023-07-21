@@ -5,24 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
-class SinhVien extends Model
+class GiaoVien extends Model
 {
     use HasFactory;
-    protected String $TABLE = "SINHVIEN";
-    public function GetDanhSach($page = null){
-        $result = DB::table($this->TABLE)->leftJoin('LOP','SINHVIEN.id_lop','=','LOP.ID')->select('SINHVIEN.*','Lop.malop')->paginate($page);
+    protected String $TABLE = "GIAOVIEN";
+    public function GetList(){
+        $result = DB::table($this->TABLE)->get();
         return $result;
     }
-    public function AddSinhVien($data){
+    public function Get($page = null){
+        $result = DB::table($this->TABLE)->paginate($page);
+        return $result;
+    }
+    public function Add($data){
         $result = DB::table($this->TABLE)->insert($data);
         return $result;
     }
-    public function GetSinhVien($id){
+    public function GetEdit($id){
         $result = DB::table($this->TABLE)->where('id',$id)->first();
         return $result;
     }
-    public function EditSinhVien($id, $data){
+    public function Edit($id, $data){
         $result = DB::table($this->TABLE)->where('id',$id)->update($data);
         return $result;
     }

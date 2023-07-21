@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('title')
-    Danh sách sinh viên
+    Danh sách lớp
 @endsection
 @section('content')
 
@@ -10,58 +10,31 @@
                    {{ session('msg') }}
                 </div>
     @endif
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Danh sách /</span> Sinh Viên</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Danh sách /</span> Lớp</h4>
     <div class="card">
-        <h5 class="card-header">Các sinh viên</h5>
+        <h5 class="card-header">Các lớp</h5>
         <div class="table-responsive text-nowrap" >
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Mã</th>
-                        <th>Họ tên</th>
-                        <th>Email</th>
-                        <th>Khoa</th>
+                        <th>ID</th>
                         <th>Mã lớp</th>
-                        <th>Hình ảnh</th>
-                        <th>Create At</th>
                         <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach ($list as  $item)
                     <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $item->masinhvien }}</strong></td>
-                        <td>{{ $item->hoten }}</td>
-                        
-                        
-                        <td> 
-                            {{ $item->email}}
-                        </td>
-                        <td>
-                            {{ $item->khoa}}
-                        </td>
-                        <td>
-                            @if ($item->malop === null)
-                                Chưa có lớp
-                            @else
-                            {{ $item->malop}}
-                            @endif
-                            
-                        </td>
-                        <td>
-                            <img src="{{ $item->IMAGE }}" height="50px" style="object-fit: contain;" alt="">
-                            </td>
-                        <td>
-                            {{ $item->createat}}
-                            </td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $item->id }}</strong></td>
+                        <td>{{ $item->malop }}</td>
                         <td>
                             <div class="dropdown" >
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('sinhvien.editSinhVien',['id'=>$item->id]) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <button onclick="confirmDelete('{{ route('sinhvien.delete',['id'=>$item->id]) }}')" class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</button>
+                                    <a class="dropdown-item" href="{{ route('lop.edit',['id'=>$item->id]) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <button onclick="confirmDelete('{{ route('lop.destroy',['id'=>$item->id]) }}')" class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</button>
                                 </div>
                             </div>
                         </td>

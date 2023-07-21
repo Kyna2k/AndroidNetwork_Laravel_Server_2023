@@ -97,23 +97,99 @@
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-table"></i>
+                            <div data-i18n="Form Layouts">Giáo viên</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                
+                                <a href="{{ route('giaovien.index') }}" class="menu-link">
+                                    <div data-i18n="Vertical Form">Danh sách giáo viên</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('giaovien.create') }}" class="menu-link">
+                                    <div data-i18n="Horizontal Form">Thêm sinh giáo viên</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Form Layouts">Sinh Viên</div>
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
                                 
-                                <a href="{{ route('khoahoc.showDanhSachKhoaHoc') }}" class="menu-link">
+                                <a href="{{ route('sinhvien.showDanhSachSinhVien') }}" class="menu-link">
                                     <div data-i18n="Vertical Form">Danh sách sinh viên</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('khoahoc.addKhoaHoc') }}" class="menu-link">
+                                <a href="{{ route('sinhvien.addSinhVien') }}" class="menu-link">
                                     <div data-i18n="Horizontal Form">Thêm sinh viên</div>
                                 </a>
                             </li>
                         </ul>
                     </li>
-
+                    
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-table"></i>
+                            <div data-i18n="Form Layouts">Lớp</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                
+                                <a href="{{ route('lop.index') }}" class="menu-link">
+                                    <div data-i18n="Vertical Form">Danh sách lớp</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('lop.create') }}" class="menu-link">
+                                    <div data-i18n="Horizontal Form">Thêm lớp</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-table"></i>
+                            <div data-i18n="Form Layouts">Môn học</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                
+                                <a href="{{ route('monhoc.index') }}" class="menu-link">
+                                    <div data-i18n="Vertical Form">Danh sách môn học</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('monhoc.create') }}" class="menu-link">
+                                    <div data-i18n="Horizontal Form">Thêm sinh môn học</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-table"></i>
+                            <div data-i18n="Form Layouts">Loại bài viết</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                
+                                <a href="{{ route('loaibaiviet.index') }}" class="menu-link">
+                                    <div data-i18n="Vertical Form">Danh sách loại bài viết</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('loaibaiviet.create') }}" class="menu-link">
+                                    <div data-i18n="Horizontal Form">Thêm sinh loại bài viết</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- Misc -->
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
                     <li class="menu-item">

@@ -6,8 +6,7 @@ USE FAKEMYFPL
 CREATE TABLE
     IF NOT EXISTS LOAIBAIVIET (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        tenbaiviet VARCHAR(30) not NULL,
-        hinhanh VARCHAR(255)
+        theloai VARCHAR(30) not NULL,
     )
 CREATE TABLE
     IF NOT EXISTS BAIVIET (
@@ -89,7 +88,7 @@ CREATE TABLE
         Foreign Key (id_lop) REFERENCES LOP(id),
         Foreign Key (id_giaovien) REFERENCES GIAOVIEN(id),
         Foreign Key (id_monhoc) REFERENCES MONHOC(id)
-    ) 
+    ) ;
     
     
     -- CREATE Table CHAT (.`1`1`
@@ -105,3 +104,18 @@ CREATE TABLE
 INSERT INTO ADMIN (username,password,email,ten) VALUES ('admin','admin','huynobi1809@gmail.com','Phan Thanh Huy');
 
 INSERT INTO SINHVIEN(masinhvien,email,hoten,khoa) VALUES ('ps23156','huyptps23156@fpt.edu.vn','Phan Thanh Huy','MD17304')
+
+
+DROP TABLE chitietlop
+
+ALTER TABLE SINHVIEN
+ADD id_lop int;
+
+ALTER TABLE SINHVIEN
+ADD FOREIGN KEY (id_lop) REFERENCES LOP(id);
+
+use FAKEMYFPL
+
+ALTER TABLE LOAIBAIVIET
+DROP COLUMN hinhanh;
+
