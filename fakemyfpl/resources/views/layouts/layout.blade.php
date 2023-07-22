@@ -78,17 +78,17 @@
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Form Layouts">Khóa Học</div>
+                            <div data-i18n="Form Layouts">Bài viết</div>
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
                                 
-                                <a href="{{ route('khoahoc.showDanhSachKhoaHoc') }}" class="menu-link">
+                                <a href="{{ route('baiviet.index') }}" class="menu-link">
                                     <div data-i18n="Vertical Form">Danh sách</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('khoahoc.addKhoaHoc') }}" class="menu-link">
+                                <a href="{{ route('baiviet.create') }}" class="menu-link">
                                     <div data-i18n="Horizontal Form">Thêm</div>
                                 </a>
                             </li>

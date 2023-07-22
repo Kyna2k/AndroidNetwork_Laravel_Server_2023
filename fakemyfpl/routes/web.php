@@ -8,6 +8,8 @@ use App\Http\Controllers\LopController;
 use App\Http\Controllers\MonHocController;
 use App\Http\Controllers\LoaiBaiVietController;
 use App\Http\Controllers\BaiVietController;
+use App\Http\Controllers\GiaoVienController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

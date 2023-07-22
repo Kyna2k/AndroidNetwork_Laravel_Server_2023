@@ -42,7 +42,7 @@
                   <option value="{{ $item->id }}">{{ $item->malop }}</option>
                   @endforeach
                 </select>
-                @error('id_lop')
+                @error('id_loaibaiviet')
                 <span style="color: red;">{{ $message }}</span>
                 @enderror  
               </div>
