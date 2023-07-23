@@ -30,4 +30,11 @@ class SinhVien extends Model
         $result = DB::table($this->TABLE)->where('id',$id)->delete();
         return $result;
     }
+
+
+    //Login 
+    public function login($email){
+        $result = DB::table($this->TABLE)->where('email',$email)->select('id','masinhvien','hoten','khoa','IMAGE')->first();
+        return $result;
+    }
 }
