@@ -152,6 +152,32 @@
                             </li>
                         </ul>
                     </li>
+                    
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-table"></i>
+                            <div data-i18n="Form Layouts">Lịch học</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                
+                                <a href="{{ route('lichhoc.index') }}" class="menu-link">
+                                    <div data-i18n="Vertical Form">Danh sách lịch học</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('monhoc.create') }}" class="menu-link">
+                                    <div data-i18n="Horizontal Form">Thêm lịch học</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('lichhoc.gettool') }}" class="menu-link">
+                                    <div data-i18n="Horizontal Form">Tool thêm lịch học</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-table"></i>

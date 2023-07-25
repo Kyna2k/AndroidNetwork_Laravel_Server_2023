@@ -9,6 +9,7 @@ use App\Http\Controllers\MonHocController;
 use App\Http\Controllers\LoaiBaiVietController;
 use App\Http\Controllers\BaiVietController;
 use App\Http\Controllers\GiaoVienController;
+use App\Http\Controllers\LichHocController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,3 +111,15 @@ Route::prefix('giaovien')->name('giaovien.')->group(function(){
     });
 });
 
+Route::prefix('lichhoc')->name('lichhoc.')->group(function(){
+    Route::controller(LichHocController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/addlichhoc','create')->name('create');
+        Route::post('/addlichhoc','store')->name('store');
+        Route::get('/editlichhoc/{id}','edit')->name('edit');
+        Route::post('/editlichhoc/{id}','update')->name('update');
+        Route::get('/delete/{id}','destroy')->name('destroy');
+        Route::get('/tool-add-lich-hoc','gettooladdlichhoc')->name('gettool');
+        Route::post('/tool-add-lich-hoc','tooladdlichhoc')->name('tool');
+    });
+});
