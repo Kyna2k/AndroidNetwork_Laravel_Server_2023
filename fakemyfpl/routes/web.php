@@ -25,6 +25,9 @@ use App\Http\Controllers\LichHocController;
 Route::get('/', function () {
     return redirect()->route('admin.login');
 });
+Route::get('/index.html', function () {
+    return redirect()->route('sinhvien.showDanhSachSinhVien');
+});
 
 Route::prefix('khoahoc')->name('khoahoc.')->group(function(){
     Route::controller(KhoaHocController::class)->group(function(){

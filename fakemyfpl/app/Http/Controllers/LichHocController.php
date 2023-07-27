@@ -62,6 +62,19 @@ class LichHocController extends Controller
     public function edit(string $id)
     {
         //
+       
+        if(empty($id))
+        {
+            return view('Error.404');
+        }
+        $lichhoc = $this->LichHoc->GetEdit($id);
+        if($lichhoc === null){
+            return view('Error.404');
+        }
+        $listlop = $this->Lop->GetList();
+        $listgiaovien = $this->GiaoVien->GetList();
+        $listmonhoc = $this->MonHoc->GetList();
+        return view('lichhoc.editlichhoc',compact('lichhoc','listlop','listgiaovien','listmonhoc'));
     }
 
     /**
@@ -70,6 +83,20 @@ class LichHocController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        if(empty($id))
+        {
+            return view('Error.404');
+        }
+        $data = [
+            "id_lop" => $request->id_lop,
+            "id_giaovien" =>$request->id_giaovien,
+            "id_monhoc"=>$request->id_monhoc,
+            "phonghoc"=>$request->phonghoc,
+            "thoigian"=>$request->thoigian,
+            "loai"=>$request->loai
+        ];
+        $result = $this->LichHoc->edit($id,$data);
+        return redirect()->route('lichhoc.index')->with('msg','Cập nhật lịch học thành công');
     }
 
     /**
@@ -78,6 +105,14 @@ class LichHocController extends Controller
     public function destroy(string $id)
     {
         //
+        if(empty($id))
+        {
+            return view('Error.404');
+        }
+        $result = $this->LichHoc->Remove($id);
+        if($result >= 0){
+            return redirect()->route('lichhoc.index')->with('msg','Xóa lichhoc thành công');
+        }
     }
     public function gettooladdlichhoc(){
         $listlop = $this->Lop->GetList();
@@ -88,7 +123,7 @@ class LichHocController extends Controller
     public function tooladdlichhoc(Request $request){
         $result =  Excel::import(new LichHocImport($request->id_lop,$request->id_giaovien,$request->id_monhoc),$request->data);
         if($result != null){
-            return redirect().route('lichhoc.index');
+            return redirect()->route('lichhoc.index');
         }
         return 'NGANH L';
     }

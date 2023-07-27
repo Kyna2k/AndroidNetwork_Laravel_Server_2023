@@ -41,7 +41,11 @@
                             {{ $item->thoigian}}
                         </td>
                         <td>
-                            {{ $item->loai}}
+                            @if($item ->loai === "NORMAL")
+                            <span class="badge bg-label-warning me-1">{{ $item->loai }}</span>
+                            @else
+                            <span class="badge bg-label-danger me-1">{{ $item->loai }}</span>
+                            @endif
                         </td>
                         <td>
                             <div class="dropdown" >
@@ -49,8 +53,9 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('sinhvien.editSinhVien',['id'=>$item->id]) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <button onclick="confirmDelete('{{ route('sinhvien.delete',['id'=>$item->id]) }}')" class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</button>
+                                    <a class="dropdown-item" href="{{ route('lichhoc.edit',['id'=>$item->id]) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <button onclick="confirmDelete('{{ route('lichhoc.destroy',['id'=>$item->id]) }}')" class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</button>
+                                    
                                 </div>
                             </div>
                         </td>
