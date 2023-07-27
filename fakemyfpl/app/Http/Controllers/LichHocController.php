@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Imports\LichHocImport;
 use Illuminate\Http\Request;
 use App\Models\GiaoVien;
+use App\Models\LichHoc;
 use App\Models\MonHoc;
 use App\Models\Lop;
 use Maatwebsite\Excel\Facades\Excel;
@@ -14,17 +15,21 @@ class LichHocController extends Controller
     /**
      * Display a listing of the resource.
      */
-    private $GiaoVien,$MonHoc,$Lop;
-
+    private $GiaoVien,$MonHoc,$Lop,$LichHoc;
+    const PAGE = 4;
     public function __construct()
     {
         $this->GiaoVien = new GiaoVien();
         $this->MonHoc = new MonHoc();
         $this->Lop = new Lop();
+        $this->LichHoc = new LichHoc();
     }
     public function index()
     {
         //
+        $list = $this->LichHoc->Get($this::PAGE);
+        return view('lichhoc.danhsachlichhoc',compact('list'));
+
     }
 
     /**
@@ -82,6 +87,9 @@ class LichHocController extends Controller
     }
     public function tooladdlichhoc(Request $request){
         $result =  Excel::import(new LichHocImport($request->id_lop,$request->id_giaovien,$request->id_monhoc),$request->data);
-        dd($result);
+        if($result != null){
+            return redirect().route('lichhoc.index');
+        }
+        return 'NGANH L';
     }
 }

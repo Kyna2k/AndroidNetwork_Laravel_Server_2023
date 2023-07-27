@@ -17,7 +17,6 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Mã</th>
                         <th>Tên lớp</th>
                         <th>Tên giáo viên</th>
                         <th>Môn học</th>
@@ -32,28 +31,18 @@
                     <tr>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $item->tenlop }}</strong></td>
                         <td>{{ $item->tengiaovien }}</td>
-                        
-                        
                         <td> 
-                            {{ $item->email}}
+                            {{ $item->tenmon}}
                         </td>
                         <td>
-                            {{ $item->khoa}}
+                            {{ $item->phonghoc}}
                         </td>
                         <td>
-                            @if ($item->malop === null)
-                                Chưa có lớp
-                            @else
-                            {{ $item->malop}}
-                            @endif
-                            
+                            {{ $item->thoigian}}
                         </td>
                         <td>
-                            <img src="{{ $item->IMAGE }}" height="50px" style="object-fit: contain;" alt="">
-                            </td>
-                        <td>
-                            {{ $item->createat}}
-                            </td>
+                            {{ $item->loai}}
+                        </td>
                         <td>
                             <div class="dropdown" >
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

@@ -166,7 +166,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('monhoc.create') }}" class="menu-link">
+                                <a href="{{ route('lichhoc.create') }}" class="menu-link">
                                     <div data-i18n="Horizontal Form">Thêm lịch học</div>
                                 </a>
                             </li>

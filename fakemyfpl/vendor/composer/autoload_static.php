@@ -590,6 +590,7 @@ class ComposerStaticInit7554f13636e3e069da469997d0a8d319
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Imports\\LichHocImport' => __DIR__ . '/../..' . '/app/Imports/LichHocImport.php',
         'App\\Kernel' => __DIR__ . '/..' . '/laravel/pint/app/Kernel.php',
         'App\\Models\\BaiViet' => __DIR__ . '/../..' . '/app/Models/BaiViet.php',
         'App\\Models\\Cloudinary' => __DIR__ . '/../..' . '/app/Models/Cloudinary.php',

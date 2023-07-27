@@ -35,6 +35,7 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\ValidateSignature' => $baseDir . '/app/Http/Middleware/ValidateSignature.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Imports\\LichHocImport' => $baseDir . '/app/Imports/LichHocImport.php',
     'App\\Kernel' => $vendorDir . '/laravel/pint/app/Kernel.php',
     'App\\Models\\BaiViet' => $baseDir . '/app/Models/BaiViet.php',
     'App\\Models\\Cloudinary' => $baseDir . '/app/Models/Cloudinary.php',
