@@ -48,6 +48,7 @@ return array(
     'App\\Models\\SinhVien' => $baseDir . '/app/Models/SinhVien.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\admin' => $baseDir . '/app/Models/admin.php',
+    'App\\Models\\jwt' => $baseDir . '/app/Models/jwt.php',
     'App\\Output\\Concerns\\InteractsWithSymbols' => $vendorDir . '/laravel/pint/app/Output/Concerns/InteractsWithSymbols.php',
     'App\\Output\\ProgressOutput' => $vendorDir . '/laravel/pint/app/Output/ProgressOutput.php',
     'App\\Output\\SummaryOutput' => $vendorDir . '/laravel/pint/app/Output/SummaryOutput.php',

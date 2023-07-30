@@ -603,6 +603,7 @@ class ComposerStaticInit7554f13636e3e069da469997d0a8d319
         'App\\Models\\SinhVien' => __DIR__ . '/../..' . '/app/Models/SinhVien.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\admin' => __DIR__ . '/../..' . '/app/Models/admin.php',
+        'App\\Models\\jwt' => __DIR__ . '/../..' . '/app/Models/jwt.php',
         'App\\Output\\Concerns\\InteractsWithSymbols' => __DIR__ . '/..' . '/laravel/pint/app/Output/Concerns/InteractsWithSymbols.php',
         'App\\Output\\ProgressOutput' => __DIR__ . '/..' . '/laravel/pint/app/Output/ProgressOutput.php',
         'App\\Output\\SummaryOutput' => __DIR__ . '/..' . '/laravel/pint/app/Output/SummaryOutput.php',

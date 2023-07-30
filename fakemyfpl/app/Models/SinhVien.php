@@ -34,7 +34,7 @@ class SinhVien extends Model
 
     //Login 
     public function login($email){
-        $result = DB::table($this->TABLE)->where('email',$email)->select('id','masinhvien','hoten','khoa','IMAGE')->first();
+        $result = DB::table($this->TABLE)->where('email',$email)->select('id','masinhvien','hoten','khoa','IMAGE','id_lop')->first();
         return $result;
     }
 }
