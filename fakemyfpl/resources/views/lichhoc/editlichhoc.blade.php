@@ -70,7 +70,7 @@
                   <option value="{{ $item->id }}" selected>{{ $item->malop }}</option>
                       
                   @else
-                  <option value="{{ $item->id }}">{{ $item->tengiaovien }}</option>
+                  <option value="{{ $item->id }}">{{ $item->malop }}</option>
                       
                   @endif
                   @endforeach

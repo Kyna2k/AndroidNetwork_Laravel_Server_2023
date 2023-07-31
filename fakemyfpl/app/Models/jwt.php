@@ -51,14 +51,17 @@ class jwt
         $is_signature_valid = ($base64_url_signature === $signature_provided);
 
         if ($is_token_expired || !$is_signature_valid) {
+            
             return [
                 "check" => FALSE,
-                "payload"=> []
+                "payload"=> [],
+                
             ];
         } else {
             return [
                 "check" => true,
-                "payload"=> $payload
+                "payload"=> $payload,
+               
             ];
         }
     }

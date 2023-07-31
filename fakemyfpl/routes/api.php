@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\SinhVien;
+use App\Models\BaiViet;
+use App\Models\LichHoc;
+use App\Models\LoaiBaiViet;
 use App\Models\jwt as JWT;
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +29,6 @@ Route::post('/login',function(Request $request){
         $jwt = new JWT();
         $token = $jwt->generate_jwt([
             "id" => $data->id,
-            "id_lop" =>$data->id_lop,
             "exp" => time() + (60*150)
         ]);
         return [
@@ -43,12 +45,84 @@ Route::post('/login',function(Request $request){
     ]; 
 });
 
-Route::get('/get-danh-sach-lop',function(Request $request){
-    $token = $request->header('Authorization');
-    $jwt = new JWT();
-    $payload = $jwt->is_jwt_valid($jwt->get_bearer_token($token));
-    return [
-        "token" => $jwt->get_bearer_token($token),
-        "payload" => json_decode($payload["payload"])
-    ];
+Route::middleware('autAPi')->group(function(){
+    Route::get('/get-danh-sach-viet',function(Request $request){
+        $baiviet = new BaiViet();
+        $result = $baiviet->GetDanhSach(1);
+        return [
+            "status"=> 200,
+            "mess" => '',
+            "data" => [
+                "data" => $result->items(),
+                'total' => $result->total(),
+                'current_page' => $result->currentPage(),
+                'last_page' => $result->lastPage(),
+            ]
+        ];
+
+    });
+    Route::get('/get-loai-bai-viet',function(Request $request){
+        $baiviet = new BaiViet();
+        $result = $baiviet->GetDanhSach(1);
+        return [
+            "status"=> 200,
+            "mess" => '',
+            "data" => [
+                "data" => $result->items(),
+                'total' => $result->total(),
+                'current_page' => $result->currentPage(),
+                'last_page' => $result->lastPage(),
+            ]
+        ];
+
+    });
+    Route::get('/get-danh-sach-viet-theo-loai',function(Request $request){
+        $baiviet = new BaiViet();
+        $result = $baiviet->GetDanhSachTheoLoai($request->query('id_loai'));
+        return [
+            "status"=> 200,
+            "mess" => '',
+            "data" => [
+                "data" => $result->items(),
+                'total' => $result->total(),
+                'current_page' => $result->currentPage(),
+                'last_page' => $result->lastPage(),
+            ]
+        ];
+
+    });
+    Route::get('/lich-hoc',function(Request $request){
+        $lichhoc = new LichHoc();
+        $result = $lichhoc->GetLop($request->query('id_lop'));
+        return [
+            "status"=> 200,
+            "mess" => '',
+            "data" => [
+                "data" => $result->items(),
+                'total' => $result->total(),
+                'current_page' => $result->currentPage(),
+                'last_page' => $result->lastPage(),
+            ]
+        ];
+        return [
+            $request->query('id_lop')
+        ];
+    });
+    Route::get('/lich-thi',function(Request $request){
+        $lichhoc = new LichHoc();
+        $result = $lichhoc->GetLopThi($request->query('id_lop'));
+        return [
+            "status"=> 200,
+            "mess" => '',
+            "data" => [
+                "data" => $result->items(),
+                'total' => $result->total(),
+                'current_page' => $result->currentPage(),
+                'last_page' => $result->lastPage(),
+            ]
+        ];
+        return [
+            $request->query('id_lop')
+        ];
+    });
 });

@@ -10,8 +10,12 @@ class BaiViet extends Model
 {
     use HasFactory;
     protected String $TABLE = "BAIVIET";
-    public function GetDanhSach($page = null){
+    public function GetDanhSach($page = 5){
         $result = DB ::table($this->TABLE)->leftJoin('LOAIBAIVIET','BAIVIET.id_loaibaiviet','=','LOAIBAIVIET.ID')->select('BAIVIET.*','LOAIBAIVIET.theloai')->paginate($page);
+        return $result;
+    }
+    public function GetDanhSachTheoLoai($id_loai,$page = 5){
+        $result = DB ::table($this->TABLE)->leftJoin('LOAIBAIVIET','BAIVIET.id_loaibaiviet','=','LOAIBAIVIET.ID')->where('LOAIBAIVIET.ID','id_loai')->select('BAIVIET.*','LOAIBAIVIET.theloai')->paginate($page);
         return $result;
     }
     public function Add($data){
