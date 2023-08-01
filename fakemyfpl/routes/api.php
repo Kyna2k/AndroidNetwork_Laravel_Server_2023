@@ -62,17 +62,12 @@ Route::middleware('autAPi')->group(function(){
 
     });
     Route::get('/get-loai-bai-viet',function(Request $request){
-        $baiviet = new BaiViet();
-        $result = $baiviet->GetDanhSach(1);
+        $loaibaiviet = new LoaiBaiViet();
+        $result = $loaibaiviet->Get();
         return [
             "status"=> 200,
             "mess" => '',
-            "data" => [
-                "data" => $result->items(),
-                'total' => $result->total(),
-                'current_page' => $result->currentPage(),
-                'last_page' => $result->lastPage(),
-            ]
+            "data" => $result->items()
         ];
 
     });
@@ -92,6 +87,23 @@ Route::middleware('autAPi')->group(function(){
 
     });
     Route::get('/lich-hoc',function(Request $request){
+        $lichhoc = new LichHoc();
+        $result = $lichhoc->GetLop($request->query('id_lop'));
+        return [
+            "status"=> 200,
+            "mess" => '',
+            "data" => [
+                "data" => $result->items(),
+                'total' => $result->total(),
+                'current_page' => $result->currentPage(),
+                'last_page' => $result->lastPage(),
+            ]
+        ];
+        return [
+            $request->query('id_lop')
+        ];
+    });
+    Route::get('/lich-hoc-theo-ngay',function(Request $request){
         $lichhoc = new LichHoc();
         $result = $lichhoc->GetLop($request->query('id_lop'));
         return [

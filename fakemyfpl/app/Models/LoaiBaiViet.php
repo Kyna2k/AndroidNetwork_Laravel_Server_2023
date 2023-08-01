@@ -14,7 +14,7 @@ class LoaiBaiViet extends Model
         $result = DB::table($this->TABLE)->get();
         return $result;
     }
-    public function Get($page = null){
+    public function Get($page = 10){
         $result = DB::table($this->TABLE)->paginate($page);
         return $result;
     }
