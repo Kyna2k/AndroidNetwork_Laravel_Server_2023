@@ -14,7 +14,7 @@ class BaiViet extends Model
         $result = DB ::table($this->TABLE)->leftJoin('LOAIBAIVIET','BAIVIET.id_loaibaiviet','=','LOAIBAIVIET.ID')->select('BAIVIET.*','LOAIBAIVIET.theloai')->paginate($page);
         return $result;
     }
-    public function GetDanhSachTheoLoai($id_loai,$page = 5){
+    public function GetDanhSachTheoLoai($id_loai,$page = 3){
         $result = DB ::table($this->TABLE)->leftJoin('LOAIBAIVIET','BAIVIET.id_loaibaiviet','=','LOAIBAIVIET.ID')->where('BAIVIET.id_loaibaiviet',$id_loai)->select('BAIVIET.*','LOAIBAIVIET.theloai')->paginate($page);
         return $result;
     }
