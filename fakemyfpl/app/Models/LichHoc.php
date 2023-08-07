@@ -23,7 +23,7 @@ class LichHoc extends Model
         ->join('LOP','LICHHOC.id_lop','=','LOP.ID')
         ->join('GIAOVIEN','LICHHOC.id_giaovien','=','GIAOVIEN.ID')
         ->join('MONHOC','LICHHOC.id_monhoc','=','MONHOC.ID')
-        ->select('LICHHOC.*','LOP.malop as tenlop','GIAOVIEN.tengiaovien','MONHOC.tenmon')
+        ->select('LICHHOC.*','LOP.malop as tenlop','GIAOVIEN.tengiaovien','MONHOC.tenmon','MONHOC.mamon')
         ->paginate($page);
         return $result;
     }
@@ -33,7 +33,29 @@ class LichHoc extends Model
         ->join('GIAOVIEN','LICHHOC.id_giaovien','=','GIAOVIEN.ID')
         ->join('MONHOC','LICHHOC.id_monhoc','=','MONHOC.ID')
         ->where('LICHHOC.id_lop',$id_lop)
-        ->select('LICHHOC.*','LOP.malop as tenlop','GIAOVIEN.tengiaovien','MONHOC.tenmon')
+        ->select('LICHHOC.*','LOP.malop as tenlop','GIAOVIEN.tengiaovien','MONHOC.tenmon','MONHOC.mamon')
+        ->paginate($page);
+        return $result;
+    }
+    public function GetLopTheoNgay($thoigian,$id_lop,$page = 4){
+        $result = DB::table($this->TABLE)
+        ->join('LOP','LICHHOC.id_lop','=','LOP.ID')
+        ->join('GIAOVIEN','LICHHOC.id_giaovien','=','GIAOVIEN.ID')
+        ->join('MONHOC','LICHHOC.id_monhoc','=','MONHOC.ID')
+        ->whereDate('LICHHOC.thoigian','=',$thoigian)
+        ->where('LICHHOC.id_lop',$id_lop)
+        ->select('LICHHOC.*','LOP.malop as tenlop','GIAOVIEN.tengiaovien','MONHOC.tenmon','MONHOC.mamon')
+        ->paginate($page);
+        return $result;
+    }
+    public function GetLopTheoThang($thoigian,$id_lop,$page = 31){
+        $result = DB::table($this->TABLE)
+        ->join('LOP','LICHHOC.id_lop','=','LOP.ID')
+        ->join('GIAOVIEN','LICHHOC.id_giaovien','=','GIAOVIEN.ID')
+        ->join('MONHOC','LICHHOC.id_monhoc','=','MONHOC.ID')
+        ->whereMonth('LICHHOC.thoigian','=',$thoigian)
+        ->where('LICHHOC.id_lop',$id_lop)
+        ->select('LICHHOC.*','LOP.malop as tenlop','GIAOVIEN.tengiaovien','MONHOC.tenmon','MONHOC.mamon')
         ->paginate($page);
         return $result;
     }
@@ -44,7 +66,7 @@ class LichHoc extends Model
         ->join('MONHOC','LICHHOC.id_monhoc','=','MONHOC.ID')
         ->where('LICHHOC.id_lop',$id_lop)
         ->where('LICHHOC.loai','<>','NORMAL')
-        ->select('LICHHOC.*','LOP.malop as tenlop','GIAOVIEN.tengiaovien','MONHOC.tenmon')
+        ->select('LICHHOC.*','LOP.malop as tenlop','GIAOVIEN.tengiaovien','MONHOC.tenmon','MONHOC.mamon')
         ->paginate($page);
         return $result;
     }

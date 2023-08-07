@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GenToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\SinhVien;
@@ -86,6 +87,40 @@ Route::middleware('autAPi')->group(function(){
         ];
 
     });
+    Route::get('/lich-hoc-theo-ngay',function(Request $request){
+        $lichhoc = new LichHoc();
+        $result = $lichhoc->GetLopTheoNgay($request->query('thoigian'),$request->query('id_lop'));
+        return [
+            "status"=> 200,
+            "mess" => '',
+            "data" => [
+                "data" => $result->items(),
+                'total' => $result->total(),
+                'current_page' => $result->currentPage(),
+                'last_page' => $result->lastPage(),
+            ]
+        ];
+        return [
+            $request->query('id_lop')
+        ];
+    });
+    Route::get('/lich-hoc-theo-thang',function(Request $request){
+        $lichhoc = new LichHoc();
+        $result = $lichhoc->GetLopTheoThang($request->query('thoigian'),$request->query('id_lop'));
+        return [
+            "status"=> 200,
+            "mess" => '',
+            "data" => [
+                "data" => $result->items(),
+                'total' => $result->total(),
+                'current_page' => $result->currentPage(),
+                'last_page' => $result->lastPage(),
+            ]
+        ];
+        return [
+            $request->query('id_lop')
+        ];
+    });
     Route::get('/lich-hoc',function(Request $request){
         $lichhoc = new LichHoc();
         $result = $lichhoc->GetLop($request->query('id_lop'));
@@ -103,23 +138,7 @@ Route::middleware('autAPi')->group(function(){
             $request->query('id_lop')
         ];
     });
-    Route::get('/lich-hoc-theo-ngay',function(Request $request){
-        $lichhoc = new LichHoc();
-        $result = $lichhoc->GetLop($request->query('id_lop'));
-        return [
-            "status"=> 200,
-            "mess" => '',
-            "data" => [
-                "data" => $result->items(),
-                'total' => $result->total(),
-                'current_page' => $result->currentPage(),
-                'last_page' => $result->lastPage(),
-            ]
-        ];
-        return [
-            $request->query('id_lop')
-        ];
-    });
+
     Route::get('/lich-thi',function(Request $request){
         $lichhoc = new LichHoc();
         $result = $lichhoc->GetLopThi($request->query('id_lop'));
@@ -136,5 +155,9 @@ Route::middleware('autAPi')->group(function(){
         return [
             $request->query('id_lop')
         ];
+    });
+    Route::get('/token_noti',function(Request $request){
+        $token = new GenToken();
+        return $token->getGoogleAccessToken();
     });
 });
