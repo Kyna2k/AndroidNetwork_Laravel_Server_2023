@@ -10,6 +10,9 @@ use App\Http\Controllers\LoaiBaiVietController;
 use App\Http\Controllers\BaiVietController;
 use App\Http\Controllers\GiaoVienController;
 use App\Http\Controllers\LichHocController;
+use App\Models\jwt;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +31,78 @@ Route::get('/', function () {
 Route::get('/index.html', function () {
     return redirect()->route('sinhvien.showDanhSachSinhVien');
 });
+Route::get('/reset-pass',function(Request $request){
+    $token = $request->query('token');
+    $email = $request->query('email');
+    if($token === null || $email === null || $email === "")
+    {
+        return view('Error.404');
+    }
+   
+    $jwt = new jwt();
+    $get_token = $jwt->is_jwt_valid($token);
+    $data = DB::table('reset_password')->where('email', $email)->where('token',$token)->first();
+    if($get_token["check"] && $data !=null && $data->avaiable)
+    {
+        return view('resetpass.reset',compact('email','token'));
+        
+    }else {
+        return view('Error.404');
+    }
+});
+Route::post('/reset-pass',function(Request $request){
+    $token = $request->query('token');
+    $email = $request->query('email');
+    if($token === null || $email === null || $email === "")
+    {
+        return view('Error.404');
+    }
+   
+    $jwt = new jwt();
+    $get_token = $jwt->is_jwt_valid($token);
+    $data = DB::table('USERS')->where('EMAIL', $email)->first();
+    if($get_token["check"] && $data !=null)
+    {
+        if($request->repassword === $request->password){
+            DB::table('USERS')->where('EMAIL',$email)->update(["PASSWORD"=>$request->password]);
+            DB::table('reset_password')->where('email', $email)->where('token',$token)->update([
+                'avaiable'=> 0
+            ]);
+            return "Thành công ròi";
 
+        }else{
+            return "Toang vl";
+        }
+    }else {
+        echo("2");
+        return view('Error.404');
+    }
+})->name('reset-pass');
+Route::get('/avaiable',function(Request $request){
+    $token = $request->query('token');
+    $email = $request->query('email');
+    if($token === null || $email === null || $email === "")
+    {
+        return view('Error.404');
+    }
+   
+    $jwt = new jwt();
+    $get_token = $jwt->is_jwt_valid($token);
+    $data = DB::table('USERS')->where('EMAIL', $email)->first();
+    if($get_token["check"] && $data !=null)
+    {
+        if($request->repassword === $request->password){
+            DB::table('USERS')->where('EMAIL',$email)->update(["avaiable"=>1]);
+            return "Kích hoạt thành công";
+
+        }else{
+            return "Toang vl";
+        }
+    }else {
+        echo("2");
+        return view('Error.404');
+    }
+})->name('reset-pass');
 Route::prefix('khoahoc')->name('khoahoc.')->group(function(){
     Route::controller(KhoaHocController::class)->group(function(){
         Route::get('/','showDanhSachKhoaHoc')->name('showDanhSachKhoaHoc');
