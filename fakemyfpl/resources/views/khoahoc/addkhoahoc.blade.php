@@ -77,6 +77,17 @@
     </div>
   </div>
   <script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyBBL_u8bwVBHpGgpji4WIhRTBDYOn0Cxag",
+  authDomain: "myfplfake.firebaseapp.com",
+  projectId: "myfplfake",
+  storageBucket: "myfplfake.appspot.com",
+  messagingSenderId: "1083679158518",
+  appId: "1:1083679158518:web:897fbfbbb598d62ee37cd7",
+  measurementId: "G-Q15M3309FM"
+  };
+  firebase.initializeApp(firebaseConfig);
+
     function onFileSelected(event) {
     var selectedFile = event.target.files[0];
     var reader = new FileReader();
@@ -90,6 +101,18 @@
     imgtag.height = "200";
   
     reader.readAsDataURL(selectedFile);
+    const ref = firebase.storage().ref(new Date().getTime() + '-' + selectedFile.name);
+    const uploadTask = ref.put(selectedFile);
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+                (snapshot) => {},
+                (error) => {console.log('firebase error: ',error)},
+                () => {
+                    uploadTask.snapshot.ref.getDownloadURL().then(url => {
+                        console.log('>>>>> File available at:', url);
+                        document.getElementById('image').value = url;
+                    })
+                }
+            );
   }
   </script>
 @endsection
