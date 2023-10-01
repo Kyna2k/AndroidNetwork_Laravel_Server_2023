@@ -63,17 +63,16 @@ class BaiVietController extends Controller
         ];
         $result = $this->BaiViet->Add($data);
         $notifi = new GenToken();
-            $data2 = [
-                "message" => [
-                    "topic" => "news",
-                    "notification" => [
-                        "title" => "Có tin mới",
-                        "body" => "Hay click vào xem để kiểm tra thôngtin mới"
-                    ]
+        $data2 = [
+            "message" => [
+                "topic" => "news",
+                "notification" => [
+                    "title" => "Có tin mới",
+                    "body" => "Hay click vào xem để kiểm tra thôngtin mới"
                 ]
-            ];
-           $ketqua =  $notifi->execute($notifi->getGoogleAccessToken(),$data2);
-           dd($ketqua);
+            ]
+        ];
+        $ketqua =  $notifi->execute($notifi->getGoogleAccessToken());
         return redirect()->route('baiviet.index')->with('msg','Thêm bài viết thành công');
     }
 
