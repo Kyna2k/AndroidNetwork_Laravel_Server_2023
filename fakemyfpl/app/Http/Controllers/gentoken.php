@@ -7,7 +7,6 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Client;
-
 class GenToken {
     public function getGoogleAccessToken(){
 
