@@ -10,7 +10,7 @@ use GuzzleHttp\Client;
 class GenToken {
     public function getGoogleAccessToken(){
 
-        $credentialsFilePath = 'D:\GitHub\AndroidNetwork_Laravel_Server_2023\fakemyfpl\app\Http\Controllers\firebase.json'; //replace this with your actual path and file name
+        $credentialsFilePath = 'U:\GitHubProject\AndroidNetwork_Laravel_Server_2023\fakemyfpl\app\Http\Controllers\firebase.json'; //replace this with your actual path and file name
         $client = new Google_Client();
         $client->setAuthConfig($credentialsFilePath);
         $client->addScope('https://www.googleapis.com/auth/firebase.messaging');
